@@ -93,6 +93,9 @@
 	
 	if (isset($_POST["username"]) && isset($_POST["password"])){
 		if(verify($link, ($_POST["username"]), ($_POST["password"]))){
+			$_SESSION['username'] = $_POST["username"];
+           	$_SESSION['userID'] = getUserID($link, $_POST["username"]);
+		
 			echo(json_encode($data));
 		}else{
 			session_destroy();
