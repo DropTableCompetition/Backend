@@ -1,6 +1,9 @@
 # Backend
 
-API:
+API: Make any HTTP Calls to the following files (input/output shown)
+Note: The URL is currently: http://programminginitiative.com/gradient/*
+(i.e. http://programminginitiative.com/gradient/upload_post.php)
+Subject to change
 
 //==================================================================ACCOUNTS
 - new_account.php   (Expects 'username' and 'password' through POST)
