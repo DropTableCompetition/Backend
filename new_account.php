@@ -31,16 +31,24 @@
 		if(username_taken($link, $UserName)){
 			return false;
 	        }else{
+			
+			
+			$color1 = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+			$color2 = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
      			$hash = password_hash($PassWord, PASSWORD_DEFAULT);
-	        	$stmt = $link->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-			$stmt-> bind_param("ss", $UserName, $hash);
+	        	$stmt = $link->prepare("INSERT INTO users (username, password, oldercolor, newercolor) VALUES (?, ?, ?, ?)");
+			$stmt-> bind_param("ssss", $UserName, $hash, $color1, $color2);
 			$stmt-> execute();
  			if($stmt){
+
  				return true;
  			}else{
  			 	echo $stmt->error;
  				return false;
  			}		
+ 			
+ 			
+ 			
 		}
 	}
 	
@@ -70,13 +78,11 @@
 		if(username_taken($link, $_POST["username"])){
 			echo("Username taken!");
 		}else{			
-			if(password_is_valid($_POST["password"])){
-							
+			if(password_is_valid($_POST["password"])){	
 				add_account($link, $_POST["username"], $_POST["password"]);
-				
 				echo("Your account has been added <a href=\"http://www.programminginitiative.com/gradient/login_form.html\"> Login here </a>");
 			}else{
-				echo("You can make a better password than that!");
+				echo("You can make a better password than that! <a href=\"http://www.programminginitiative.com/gradient/new_account.php\"> Try Again! </a>"");
 			}
 		}
 	}else{
