@@ -94,14 +94,22 @@
 	if (isset($_POST["username"]) && isset($_POST["password"])){
 		if(verify($link, ($_POST["username"]), ($_POST["password"]))){
 			$_SESSION['username'] = $_POST["username"];
-           		$_SESSION['userID'] = getUserID($link, $_POST["username"]);
+                 	$_SESSION['userID'] = getUserID($link, $_POST["username"]);
 		
 			echo(json_encode($data));
 		}else{
+			echo("Incorrect username/password");
 			session_destroy();
 		}
 	}else{
 		echo("Error: Missing arguments");
+
+		if(!isset($_POST["username"])){
+			echo("Missing username");
+		}
+		if(!isset($_POST["password"])){
+			echo("Missing password");
+		}
 	}
 
 	mysqli_close($link);

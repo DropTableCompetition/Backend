@@ -3,3 +3,5 @@ CREATE TABLE `pi_gradient`.`posts` ( `postID` INT UNSIGNED NOT NULL AUTO_INCREME
 ALTER TABLE `users` CHANGE `username` `username` VARCHAR(20) NOT NULL;
 ALTER TABLE `users` CHANGE `password` `password` VARCHAR(256) NOT NULL;
 ALTER TABLE `posts` ADD `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `postID`;
+CREATE TABLE `pi_gradient`.`transactions` ( `usernameA` VARCHAR(20) NOT NULL , `usernameB` VARCHAR(20) NOT NULL , `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ) ENGINE = MyISAM;
+CREATE TABLE `pi_gradient`.`feed` ( `postID` INT UNSIGNED NOT NULL , `username` VARCHAR(20) NOT NULL ) ENGINE = MyISAM;

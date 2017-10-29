@@ -1,5 +1,5 @@
 <?php
-
+	print_r($_POST);
        function username_taken($link, $UserName){
 		$stmt = $link->prepare("SELECT username FROM users WHERE username = ?");	
 		
@@ -79,5 +79,7 @@
 				echo("You can make a better password than that!");
 			}
 		}
+	}else{
+		echo("You done goofeda.");
 	}
 ?>
